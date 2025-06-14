@@ -33,3 +33,19 @@ sudo python3 file_intercepter.py
 🌐 Step 3: Enable IP forwarding
 In another terminal, run:
 echo 1 > /proc/sys/net/ipv4/ip_forward
+
+---
+
+📚 What This Script Does
+
+- Monitors HTTP traffic using Scapy and NetfilterQueue.
+- Detects download requests for `.exe` files.
+- Stores the ACK number of those requests.
+- When a response with the matching SEQ number is detected, it **replaces the response** with a **301 redirect** to a custom `.exe` file.
+
+---
+
+## 🔍 Important Notes
+- Only works on HTTP traffic (not HTTPS).
+- Make sure your iptables rules are correctly set.
+- Requires `root` privileges to run due to packet manipulation.
